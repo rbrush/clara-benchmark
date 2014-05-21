@@ -1,0 +1,11 @@
+package clara.benchmark.drools.simple_join;
+
+import clara.benchmark.beans.Order;
+import clara.benchmark.beans.Customer;
+
+query "vip_orders"
+
+   Order($id : customerId, $total: total)
+   Customer($id == id, vip == true)
+
+end

@@ -1,0 +1,9 @@
+package clara.benchmark.drools.simple_query;
+
+import clara.benchmark.beans.Order;
+
+query "customer_orders"(Long id)
+
+   Order(id == customerId, $total: total)
+
+end

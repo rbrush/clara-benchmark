@@ -1,0 +1,15 @@
+package clara.benchmark.drools.accum_max;
+
+import clara.benchmark.beans.Order;
+
+query "maxorder"
+
+   $max : Order()
+   from accumulate(Order($order : this),
+                   init(Order max = null;),
+                   action(if (max == null)
+                            max = $order;
+                          else
+                            max = max.getTotal() > $order.getTotal() ? max : $order;),
+                   result(max));
+end

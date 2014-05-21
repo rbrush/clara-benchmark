@@ -1,0 +1,13 @@
+package clara.benchmark.drools.visit_order_same_day;
+
+import clara.benchmark.beans.Order;
+import clara.benchmark.beans.Visit;
+
+import org.joda.time.DateTime;
+
+query "same_day_visit"
+
+   Order($id : customerId, $day : time.toLocalDate())
+   Visit($id == customerId, $day == time.toLocalDate())
+
+end
