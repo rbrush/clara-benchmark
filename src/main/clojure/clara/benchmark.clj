@@ -2,7 +2,6 @@
   (:require [criterium.core :as c])
   (:import [clara.benchmark IBenchmark]))
 
-
 (def benchmarks
   [(clara.benchmark.drools.SameDayQuery.)
    (clara.benchmark.interop.SameDayQuery.)
@@ -13,7 +12,9 @@
    (clara.benchmark.drools.SimpleJoin.)
    (clara.benchmark.interop.SimpleJoin.)
    (clara.benchmark.drools.AccumMax.)
-   (clara.benchmark.interop.AccumMax.)])
+   (clara.benchmark.interop.AccumMax.)
+   (clara.benchmark.drools.SimpleInsert.)
+   (clara.benchmark.interop.SimpleInsert.)])
 
 (defn- run-benchmark [^IBenchmark benchmark]
   (let [session (.getSession benchmark)

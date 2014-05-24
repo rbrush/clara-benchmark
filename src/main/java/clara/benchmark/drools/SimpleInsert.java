@@ -8,23 +8,21 @@ import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.QueryResults;
 import org.kie.api.runtime.rule.QueryResultsRow;
 
-public class SimpleJoin implements IBenchmark<KieBase> {
+public class SimpleInsert implements IBenchmark<KieBase> {
 
     @Override
     public String getName()  {
-        return "drools.simple-join";
+        return "drools.simple-insert";
     }
 
     @Override
     public KieBase getSession() throws Exception {
-        return KnowledgeSupport.load("simple_join.drl");
+        return KnowledgeSupport.load("simple_insert.drl");
     }
 
     @Override
     public Iterable<?> getFacts() throws Exception {
-        return Iterables.concat(
-                Data.getOrders(1000, 100),
-                Data.getCustomers(100));
+        return Data.getCustomers(100);
     }
 
     @Override
@@ -39,13 +37,13 @@ public class SimpleJoin implements IBenchmark<KieBase> {
 
             session.fireAllRules();
 
-            QueryResults results = session.getQueryResults("vip_orders");
+            QueryResults results = session.getQueryResults("get_discounts");
 
             // Iterate through results to ensure all work is done.
             for (QueryResultsRow result : results) {
 
-                result.get("$id");
-                // System.out.println("total: " + result.get("$day"));
+                result.get("$percent");
+             //   System.out.println("total: " + result.get("$percent"));
             }
         } finally {
 

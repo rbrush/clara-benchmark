@@ -1,0 +1,19 @@
+package clara.benchmark.drools.simple_insert;
+
+import clara.benchmark.beans.Discount;
+import clara.benchmark.beans.Customer;
+
+
+rule "vip_discount"
+
+   when
+     Customer (vip == true)
+   then
+     insertLogical ( new Discount(10));
+end
+
+query "get_discounts"
+
+   Discount($percent : percent)
+
+end
