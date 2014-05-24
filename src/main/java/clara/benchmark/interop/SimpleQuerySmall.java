@@ -10,11 +10,12 @@ import clara.rules.WorkingMemory;
 import java.util.Collections;
 
 
-public class SimpleQuery implements IBenchmark<WorkingMemory> {
+public class SimpleQuerySmall implements IBenchmark<WorkingMemory> {
+
     @Override
     public String getName() {
 
-        return "clara.simple-query";
+        return "clara.simple-query-small";
     }
 
     @Override
@@ -24,7 +25,7 @@ public class SimpleQuery implements IBenchmark<WorkingMemory> {
 
     @Override
     public Iterable<?> getFacts() throws Exception {
-        return Data.getOrders(1000, 10);
+        return Data.getOrders(10, 2);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class SimpleQuery implements IBenchmark<WorkingMemory> {
         Iterable<QueryResult> results = session.insert(facts)
                 .fireRules()
                 .query("clara.benchmark.simple-query/customer-orders",
-                        Collections.singletonMap("?id", 5L));
+                        Collections.singletonMap("?id", 2L));
 
         // Iterate through results to ensure all work is done.
         for (QueryResult result: results)  {

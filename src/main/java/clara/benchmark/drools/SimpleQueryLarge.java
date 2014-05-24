@@ -13,11 +13,11 @@ import java.util.List;
 /**
  * Simple query benchmark.
  */
-public class SimpleQuery implements IBenchmark<KieBase> {
+public class SimpleQueryLarge implements IBenchmark<KieBase> {
 
     public String getName() {
 
-        return "drools.simple-query";
+        return "drools.simple-query-large";
     }
 
     @Override
@@ -44,7 +44,7 @@ public class SimpleQuery implements IBenchmark<KieBase> {
 
             session.fireAllRules();
 
-            QueryResults results = session.getQueryResults("customer_orders", 5L);
+            QueryResults results = session.getQueryResults("customer_orders", 2L);
 
             // Iterate through results to ensure all work is done.
             for (QueryResultsRow result: results) {

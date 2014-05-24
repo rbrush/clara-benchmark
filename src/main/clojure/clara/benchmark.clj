@@ -5,18 +5,21 @@
 
 (def benchmarks
   [(clara.benchmark.drools.SameDayQuery.)
-   (clara.benchmark.drools.AccumMax.)
-   (clara.benchmark.drools.SimpleQuery.)
-   (clara.benchmark.drools.SimpleJoin.)
    (clara.benchmark.interop.SameDayQuery.)
-   (clara.benchmark.interop.AccumMax.)
-   (clara.benchmark.interop.SimpleQuery.)
-   (clara.benchmark.interop.SimpleJoin.)])
+   (clara.benchmark.drools.SimpleQuerySmall.)
+   (clara.benchmark.interop.SimpleQuerySmall.)
+   (clara.benchmark.drools.SimpleQueryLarge.)
+   (clara.benchmark.interop.SimpleQueryLarge.)
+   (clara.benchmark.drools.SimpleJoin.)
+   (clara.benchmark.interop.SimpleJoin.)
+   (clara.benchmark.drools.AccumMax.)
+   (clara.benchmark.interop.AccumMax.)])
 
 (defn- run-benchmark [^IBenchmark benchmark]
   (let [session (.getSession benchmark)
         facts (.getFacts benchmark)]
-    (println "Running benchmark: " (.getName benchmark))
+    (println)
+    (println "*** Running benchmark:" (.getName benchmark) "***")
 
     (c/bench (.run benchmark session facts))))
 
