@@ -17,7 +17,8 @@
 
                  ;; Guava used by helper functions.
                  [com.google.guava/guava "14.0.1"]
-                 ]
+
+                 [org.clojure/tools.cli "0.3.1"]]
 
   :source-paths ["src/main/clojure"]
   :test-paths ["src/test/clojure"]
