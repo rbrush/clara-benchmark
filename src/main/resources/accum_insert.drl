@@ -1,0 +1,29 @@
+package clara.benchmark.drools.accum_insert;
+
+import clara.benchmark.beans.Discount;
+import clara.benchmark.beans.Customer;
+
+import java.util.ArrayList;
+
+rule "vip_discount"
+
+   when
+     $customers : ArrayList()
+     from accumulate(Customer($it : this, vip == true),
+                     init(ArrayList results = new ArrayList();),
+                     action(results.add($it);),
+                     result(results));
+   then
+
+     // No way to do a bulk insert in Drools, so we must iterate.
+     for (Object customer : $customers) {
+         insertLogical (new Discount(10));
+     }
+
+end
+
+query "get_discounts"
+
+   Discount($percent : percent)
+
+end
