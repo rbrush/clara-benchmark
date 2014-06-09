@@ -1,21 +1,8 @@
 This project profiles several uses of Clara, starting with trivial examples. It also benchmarks of some equivalent Drools rules for comparison purposes.
 
-Output of a test run is below. This should be considered a work in progress as Clara continues to be optimized.
+Test outputs are below. This should be considered a work in progress as Clara continues to be optimized.
 
 ```
-Matched benchmarks:
-   drools.same-day-query
-   clara.same-day-query
-   drools.simple-query-small
-   clara.simple-query-small
-   drools.simple-query-large
-   clara.simple-query-large
-   drools.simple-join
-   clara.simple-join
-   drools.accum-max
-   clara.accum-max
-   drools.simple-insert
-   clara.simple-insert
 
 *** Running benchmark: drools.same-day-query ***
 WARNING: Final GC required 1.290784265758516 % of runtime
@@ -143,4 +130,30 @@ Evaluation count : 89640 in 60 samples of 1494 calls.
 Found 1 outliers in 60 samples (1.6667 %)
 	low-severe	 1 (1.6667 %)
  Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+*** Running benchmark: drools.accum-insert ***
+WARNING: Final GC required 1.430711429156397 % of runtime
+Evaluation count : 215700 in 60 samples of 3595 calls.
+             Execution time mean : 281.168471 µs
+    Execution time std-deviation : 2.334104 µs
+   Execution time lower quantile : 277.573562 µs ( 2.5%)
+   Execution time upper quantile : 286.606941 µs (97.5%)
+                   Overhead used : 2.238298 ns
+
+Found 3 outliers in 60 samples (5.0000 %)
+	low-severe	 3 (5.0000 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+*** Running benchmark: clara.accum-insert ***
+Evaluation count : 511620 in 60 samples of 8527 calls.
+             Execution time mean : 118.240651 µs
+    Execution time std-deviation : 734.894078 ns
+   Execution time lower quantile : 117.218472 µs ( 2.5%)
+   Execution time upper quantile : 119.847404 µs (97.5%)
+                   Overhead used : 2.238298 ns
+
+Found 1 outliers in 60 samples (1.6667 %)
+	low-severe	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
 ```
