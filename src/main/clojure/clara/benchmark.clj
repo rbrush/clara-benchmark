@@ -44,7 +44,7 @@
   [["-q" "--quick" "Do a quick benchmark, which is faster but lest accurate."  ]
    ["-l" "--list" "List the available benchmarks."]
    ["-p" "--profile" "Runs the given benchmarks for profiling, without benchmark warming."]
-   ["-c" "--count COUNT" "Number of iterations to run when profiling." :default 1000 :parse-fn #(Integer/parseInt %)]])
+   ["-c" "--count COUNT" "Number of iterations to run when profiling." :default 10000 :parse-fn #(Integer/parseInt %)]])
 
 (defn -main
   "Accepts a regex pattern for the benchmarks to run."
