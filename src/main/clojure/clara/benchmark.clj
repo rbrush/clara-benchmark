@@ -18,7 +18,9 @@
    (clara.benchmark.drools.SimpleInsert.)
    (clara.benchmark.interop.SimpleInsert.)
    (clara.benchmark.drools.AccumInsert.)
-   (clara.benchmark.interop.AccumInsert.)])
+   (clara.benchmark.interop.AccumInsert.)
+   (clara.benchmark.drools.AccumRepeatedlyNotSelected.)
+   (clara.benchmark.interop.AccumRepeatedlyNotSelected.)])
 
 (defn- run-benchmark [^IBenchmark benchmark options]
   (let [session (.getSession benchmark)

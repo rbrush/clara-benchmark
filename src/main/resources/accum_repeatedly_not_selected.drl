@@ -1,0 +1,30 @@
+package clara.benchmark.drools.accum_repeatedly_not_selected;
+
+import clara.benchmark.beans.Discount;
+import clara.benchmark.beans.Customer;
+
+import java.util.ArrayList;
+
+rule "vip_discount"
+
+   when
+     $lowestCustomer : Customer()
+     from accumulate(Customer($customer : this),
+                     init(Customer min = null;),
+                     action(if (min == null)
+                              min = $customer;
+                            else
+                              min = min.getId() < $customer.getId() ? min : $customer;),
+	             result(min))
+   then
+     for(int i=1; i<1001; i++) {
+         insertLogical (new Discount(10));
+     }
+
+end
+
+query "get_discounts"
+
+   Discount($percent : percent)
+
+end
