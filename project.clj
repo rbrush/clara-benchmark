@@ -2,10 +2,10 @@
   :description "Clara Benchmarks"
   :url "https://github.com/rbrush/clara-examples"
   :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+            :url "https://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.toomuchcode/clara-rules "0.8.3" :exclusions [org.clojure/clojurescript]]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [com.cerner/clara-rules "0.19.0-SNAPSHOT" :exclusions [org.clojure/clojurescript]]
                  [clj-time "0.7.0"]
                  [org.drools/drools-core "6.0.0.Final"]
                  [org.drools/drools-compiler "6.0.0.Final"]
